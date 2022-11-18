@@ -1,0 +1,35 @@
+.login{
+    background-color: white;
+    width: min(80% , 35rem);
+    margin: 4rem auto;
+    padding: 1rem;
+}
+
+.auth-heading h1{
+    font-weight: 800;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.form-group{
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.form-group input{
+    margin-top: 0.3rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+.submit button{
+    font-size: 1.2rem;
+    padding: 0.3rem 1rem;
+}
+
+.form-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
