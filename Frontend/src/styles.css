@@ -4,7 +4,11 @@
     --clr-accent: #718096;
     --background-color: rgba(226, 232, 240, 1);
     --btn-primary: #4c51bf;
+    --primary-hover:#797dc1;
     --gray-200: #edf2f7;
+    --gray-400: #abaeb0;
+    --link-color:#813797;
+
 }
 
 body {
@@ -46,11 +50,6 @@ label{
     color: var(--clr-accent);
 }
 
-.btn-primary{
-    background-color: var(--btn-primary);
-    color: white;
-}
-
 
 input:focus{
     outline: none;
@@ -58,4 +57,88 @@ input:focus{
 
 button{
     cursor: pointer;
+}
+
+
+
+
+
+.btn-primary{
+    background-color: var(--btn-primary);
+    color: white;
+}
+
+
+.auth{
+    background-color: white;
+    width: min(90% , 25rem);
+    margin: 4rem auto;
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+
+.auth-heading h1{
+    font-weight: 800;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.form-group{
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.form-group input{
+    margin-top: 0.3rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+.submit button{
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.5rem 1.5rem;
+}
+
+.form-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.redirect{
+    text-decoration: underline;
+    color: var(--link-color);
+}
+
+.redirect:hover{
+    color: var(--btn-primary);
+}
+
+.span-small{
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--gray-400);
+}
+
+
+.btn-primary:hover,
+.btn-primary:disabled{
+    background-color: var(--primary-hover);
+}
+
+.btn-primary:disabled{
+    cursor: not-allowed;
+}
+
+
+
+.text-danger{
+    font-size: 0.9rem;
+    color: red;
 }
