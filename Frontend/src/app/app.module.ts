@@ -14,6 +14,9 @@ import { AuthenticationService } from './services/auth/authentication.service';
 import { ProfileComponent } from './profile/profile.component';
 import { LoaderComponent } from './loader/loader.component';
 import { SpinnerService } from './services/spinner/spinner.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { CurrentUserPipe } from './pipes/Auth/current-user.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { SpinnerService } from './services/spinner/spinner.service';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    LoaderComponent
+    LoaderComponent,
+    NavbarComponent,
+    HomeComponent,
+    CurrentUserPipe
   ],
   imports: [
     BrowserModule,

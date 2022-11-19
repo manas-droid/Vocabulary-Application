@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder , FormGroup, Validators}  from "@angular/forms"
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/auth/authentication.service';
-import { SpinnerService } from '../services/spinner/spinner.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,12 +9,12 @@ import { SpinnerService } from '../services/spinner/spinner.service';
 })
 export class RegisterComponent implements OnInit {
   public registerForm !: FormGroup;
+  public submit:Boolean = false;
 
   constructor(
     private fb : FormBuilder,
     private auth:AuthenticationService,
-    private router : Router,
-    private spinnerService:SpinnerService
+    private router : Router
     ) { }
 
   ngOnInit(): void {
@@ -29,17 +28,14 @@ export class RegisterComponent implements OnInit {
   }
 
   async onSubmit(){
-    
     console.log(this.registerFormControl);
     
     if(!this.registerForm.valid) return;
 
     const {email , password} = this.registerForm.value;
 
-    this.spinnerService.load();
-    const user = await this.auth.signUp(email , password);
-    this.spinnerService.stop();
-
+    this.submit = true;
+    await this.auth.signUp(email , password);
     this.router.navigateByUrl('/login');
   }
 

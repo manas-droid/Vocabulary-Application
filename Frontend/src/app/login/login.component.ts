@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/auth/authentication.service';
-import { SpinnerService } from '../services/spinner/spinner.service';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb : FormBuilder,
     private auth : AuthenticationService,
-    private router : Router,
-    private spinnerService:SpinnerService
-  ) { }
+    private router : Router
+    ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -36,9 +34,7 @@ export class LoginComponent implements OnInit {
     const {email , password} = this.loginForm.value;
 
     console.log(email," " , password);
-    this.spinnerService.load();
     await this.auth.logIn(email , password);
-    this.spinnerService.stop();
-    this.router.navigate(['user-profile'])
+    this.router.navigate([''])
   }
 }

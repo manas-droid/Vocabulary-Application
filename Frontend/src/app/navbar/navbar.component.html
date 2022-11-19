@@ -1,0 +1,26 @@
+<header class="container">
+    <nav class="primary-nav">
+        <div class="logo">
+            <span class="vocab">Vocabulary</span>
+            <span class="community">Community</span>
+        </div>
+        
+        <div *ngIf="auth.userData | currentUser |async as user " >
+
+            <div class="pages" *ngIf="user.exists">
+                <ul>
+                    <li><a href="/user-profile">Profile</a></li>
+                    <li><a href="#likes">Liked Posts</a></li>
+                    <li><a href="#posts"> Your Posts</a></li>
+                    <li> <button class="btn btn-secondary" (click)="onLogOut()"> Logout</button>  </li>
+                </ul>
+            </div>
+            
+            <div class="login"  *ngIf="!user.exists">
+                <button class="btn btn-primary" [routerLink]="['login']">Login</button>
+            </div>
+
+        </div>
+        
+    </nav>
+</header>
