@@ -1,9 +1,11 @@
 <header class="container">
     <nav class="primary-nav">
-        <div class="logo">
-            <span class="vocab">Vocabulary</span>
-            <span class="community">Community</span>
-        </div>
+        <a href="/">
+            <div class="logo" style="color: black;">
+                <span class="vocab">Vocabulary</span>
+                <span class="community">Community</span>
+            </div>
+        </a>
         
         <div *ngIf="auth.userData | currentUser |async as user " >
 

@@ -4,10 +4,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {AngularFireAuthGuard , redirectUnauthorizedTo , redirectLoggedInTo} from '@angular/fire/compat/auth-guard';
 import { ProfileComponent } from './profile/profile.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './main-page/home/home.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-const redirectLoggedInToProfile = () => redirectLoggedInTo(['user-profile']);
+const redirectLoggedInToProfile = () => redirectLoggedInTo(['']);
 
 const routes: Routes = [{
   path:"login",

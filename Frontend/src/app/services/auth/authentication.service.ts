@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
+import { NotificationService } from '../notification/notification.service';
 import { SpinnerService } from '../spinner/spinner.service';
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class AuthenticationService {
 
   constructor(
     private auth : AngularFireAuth,
-    private spinnerService:SpinnerService
+    private spinnerService:SpinnerService,
+    private noti:NotificationService
     ) {
     this.userData = auth.authState;
   }
@@ -20,9 +22,10 @@ export class AuthenticationService {
       this.spinnerService.load();
       const newUser = await this.auth.createUserWithEmailAndPassword(email , password);
       this.spinnerService.stop();
+      this.noti.success("Congratulations! You have successfully created an Account!");
       return newUser.user;   
     } catch (error:any) {
-      console.error("Authentication Service -> Sign Up Error -> ",error.message.split(":")[1]);
+      this.noti.failure(error.message.split(': ')[1]);
       this.spinnerService.stop();
       throw new Error(error.message);
     }
@@ -33,9 +36,11 @@ export class AuthenticationService {
       this.spinnerService.load();
       await this.auth.signInWithEmailAndPassword(email , password);
       this.spinnerService.stop();
+      this.noti.success("Congratulations! You have successfully logged in!");
       return true;
     } catch (error:any) {
-      console.error("Authentication Service -> LogOut Error -> ",error);
+
+      this.noti.failure(error.message.split(': ')[1] || "Something went wrong");
       this.spinnerService.stop();
       throw new Error(error.message);
     }

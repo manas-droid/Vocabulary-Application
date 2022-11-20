@@ -15,8 +15,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoaderComponent } from './loader/loader.component';
 import { SpinnerService } from './services/spinner/spinner.service';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './main-page/home/home.component';
 import { CurrentUserPipe } from './pipes/Auth/current-user.pipe';
+import { NotificationComponent } from './notification/notification.component';
+import { NotificationService } from './services/notification/notification.service';
+import { SearchComponent } from './main-page/search/search.component';
+import { ComponentComponent } from './post/component/component.component';
+import { LikeComponent } from './post/like/like.component';
+import { LikedPostsComponent } from './liked-posts/liked-posts.component';
+import { YourPostsComponent } from './your-posts/your-posts.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,13 @@ import { CurrentUserPipe } from './pipes/Auth/current-user.pipe';
     LoaderComponent,
     NavbarComponent,
     HomeComponent,
-    CurrentUserPipe
+    CurrentUserPipe,
+    NotificationComponent,
+    SearchComponent,
+    ComponentComponent,
+    LikeComponent,
+    LikedPostsComponent,
+    YourPostsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +52,8 @@ import { CurrentUserPipe } from './pipes/Auth/current-user.pipe';
   ],
   providers: [
     AuthenticationService,
-    SpinnerService
+    SpinnerService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })

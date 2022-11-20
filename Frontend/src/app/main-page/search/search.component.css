@@ -1,0 +1,7 @@
+.lang{
+    cursor: pointer;
+}
+
+.lang:hover{
+    background-color: var(--primary-hover);
+}
