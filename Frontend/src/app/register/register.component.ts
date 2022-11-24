@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
   }
 
   async onSubmit(){
-    console.log(this.registerFormControl);
     
     if(!this.registerForm.valid) return;
 

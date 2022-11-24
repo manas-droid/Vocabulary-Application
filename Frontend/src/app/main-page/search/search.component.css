@@ -5,3 +5,8 @@
 .lang:hover{
     background-color: var(--primary-hover);
 }
+
+
+.search-box button{
+    width: 20%;
+}

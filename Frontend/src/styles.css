@@ -243,12 +243,6 @@ button {
     border: none;
 }
 
-.btn-primary {
-    color: white;
-    width: 20%;
-    background-color: var(--btn-primary);
-}
-
 .box {
     background-color: var(--clr-accent);
     padding: 0.5rem 1rem;

@@ -8,7 +8,6 @@
         </a>
         
         <div *ngIf="auth.userData | currentUser |async as user " >
-
             <div class="pages" *ngIf="user.exists">
                 <ul>
                     <li><a href="/user-profile">Profile</a></li>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -24,7 +24,6 @@ import { ComponentComponent } from './post/component/component.component';
 import { LikeComponent } from './post/like/like.component';
 import { LikedPostsComponent } from './liked-posts/liked-posts.component';
 import { YourPostsComponent } from './your-posts/your-posts.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,12 +47,13 @@ import { YourPostsComponent } from './your-posts/your-posts.component';
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebase),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     AuthenticationService,
     SpinnerService,
-    NotificationService
+    NotificationService,
   ],
   bootstrap: [AppComponent]
 })
