@@ -11,8 +11,8 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
 @ToString
+@Setter
 public class User extends DateUtil implements Persistable<String> {
     @Id
     private String uId;

@@ -3,7 +3,6 @@ package com.example.Backend.security;
 
 import com.google.firebase.auth.FirebaseAuth;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component

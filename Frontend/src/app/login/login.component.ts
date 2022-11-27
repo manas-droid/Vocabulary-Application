@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/auth/authentication.service';
+import { NotificationService } from '../services/notification/notification.service';
+import { SpinnerService } from '../services/spinner/spinner.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb : FormBuilder,
     private auth : AuthenticationService,
-    private router : Router
+    private router : Router,
+    private noti : NotificationService,
+    private spin : SpinnerService
     ) { }
 
   ngOnInit(): void {
@@ -30,11 +34,19 @@ export class LoginComponent implements OnInit {
   }
 
 
-  async onSubmit(){
+  onSubmit(){
     const {email , password} = this.loginForm.value;
-
-    console.log(email," " , password);
-    await this.auth.logIn(email , password);
-    this.router.navigate([''])
+    this.spin.load();
+    this.auth.logIn(email , password).subscribe({
+      next : (value)=>{
+        this.noti.success("User logged in Successfully!");
+        this.router.navigate(['/']);
+        this.spin.stop();
+      },
+      error : (error)=>{
+        this.noti.failure(error);
+        this.spin.stop();
+      }
+    });
   }
 }

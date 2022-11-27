@@ -1,11 +1,13 @@
 package com.example.Backend.exception.utils;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @PropertySource("classpath:application.constants.properties")
 @Component
+@Getter
 public class ExceptionMessages {
     @Value("${ARGUMENT_EXCEPTION}")
     public String ARGUMENT_EXCEPTION;

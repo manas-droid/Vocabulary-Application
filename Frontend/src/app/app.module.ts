@@ -3,9 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +22,7 @@ import { ComponentComponent } from './post/component/component.component';
 import { LikeComponent } from './post/like/like.component';
 import { LikedPostsComponent } from './liked-posts/liked-posts.component';
 import { YourPostsComponent } from './your-posts/your-posts.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +43,6 @@ import { YourPostsComponent } from './your-posts/your-posts.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     HttpClientModule
@@ -53,8 +50,13 @@ import { YourPostsComponent } from './your-posts/your-posts.component';
   providers: [
     AuthenticationService,
     SpinnerService,
-    NotificationService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+/*
+
+*/
