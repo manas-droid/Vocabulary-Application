@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder , FormGroup, Validators}  from "@angular/forms"
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/auth/authentication.service';
+import { NotificationService } from '../services/notification/notification.service';
+import { SpinnerService } from '../services/spinner/spinner.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,7 +16,9 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb : FormBuilder,
     private auth:AuthenticationService,
-    private router : Router
+    private router : Router,
+    private noti:NotificationService,
+    private spin : SpinnerService
     ) { }
 
   ngOnInit(): void {
@@ -33,9 +37,24 @@ export class RegisterComponent implements OnInit {
 
     const {email , password} = this.registerForm.value;
 
+
     this.submit = true;
-    await this.auth.signUp(email , password);
-    this.router.navigateByUrl('/login');
+    this.spin.load();
+
+    this.auth.signUp(email , password).subscribe({
+      next : (value)=>{
+        this.noti.success('Successfully Created a User');
+        this.spin.stop();
+        this.router.navigate(['/']);
+        this.submit = false;
+      },
+      error : (err) =>{
+        this.noti.failure(err);
+        this.spin.stop();
+        this.submit = false;   
+      }
+    });
+
   }
 
   get registerFormControl() {

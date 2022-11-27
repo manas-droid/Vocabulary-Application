@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private auth : AngularFireAuth) {
+   }
 
   ngOnInit(): void {
+    console.log("hello World");
+    
+    this.auth.authState.subscribe({
+      next(value) {
+         value?.updateProfile({
+          displayName: undefined,
+          photoURL:undefined
+         }).then(()=>{
+          console.log(value.displayName);
+          console.log(value.photoURL);
+          
+         });
+      },
+    });
   }
 
 }

@@ -9,12 +9,9 @@ import { AuthenticationService } from '../services/auth/authentication.service';
 export class NavbarComponent implements OnInit {
 
   constructor(public auth:AuthenticationService) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    
-  }
-
-  async onLogOut(){
-    await this.auth.logOut();
+  onLogOut(){
+    this.auth.logOut();
   }
 }
